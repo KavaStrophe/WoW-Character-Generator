@@ -1,5 +1,5 @@
 import { IQueryHandler } from "QueryHandlers/IQueryHandler";
-import { RaceEnum } from "Resources/Enums/RaceEnum";
-import { GetRacesFromExpansionQuery } from "Resources/Models/GetRacesFromExpansionQuery";
+import { CharacterRaceEnum } from "Resources/Enums/CharacterEnums/CharacterRaceEnum";
+import { GetRacesFromExpansionQuery } from "Resources/Models/Queries/GetRacesFromExpansionQuery";
 
-export interface IGetRacesFromExpansionQueryHandler extends IQueryHandler<GetRacesFromExpansionQuery, RaceEnum[]>{}
+export interface IGetRacesFromExpansionQueryHandler extends IQueryHandler<GetRacesFromExpansionQuery, CharacterRaceEnum[]>{}

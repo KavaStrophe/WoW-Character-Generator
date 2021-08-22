@@ -1,8 +1,8 @@
-import { RaceEnum } from "Resources/Enums/RaceEnum";
+import { CharacterRaceEnum } from "Resources/Enums/CharacterEnums/CharacterRaceEnum";
 import { IRaceInExpansion } from "../IRaceInExpansion";
 
-const vanillaNewPlayableRaces: RaceEnum[] = [];
-const vanillaNewRaces: RaceEnum[] = [...vanillaNewPlayableRaces];
+const vanillaNewPlayableRaces: CharacterRaceEnum[] = [];
+const vanillaNewRaces: CharacterRaceEnum[] = [...vanillaNewPlayableRaces];
 
 export class VanillaRaces implements IRaceInExpansion {
     static NewRaces = vanillaNewRaces;

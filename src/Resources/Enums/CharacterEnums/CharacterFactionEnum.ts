@@ -1,4 +1,4 @@
-export enum FactionEnum {
+export enum CharacterFactionEnum {
     NotSpecified,
     Hord,
     Alliance,

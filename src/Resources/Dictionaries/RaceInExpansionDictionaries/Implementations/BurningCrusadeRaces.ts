@@ -1,9 +1,9 @@
-import { RaceEnum } from "Resources/Enums/RaceEnum";
+import { CharacterRaceEnum } from "Resources/Enums/CharacterEnums/CharacterRaceEnum";
 import { IRaceInExpansion } from "../IRaceInExpansion";
 import { VanillaRaces } from "./VanillaRaces";
 
-const burningCrusadeNewPlayableRaces: RaceEnum[] = [];
-const burningCrusadeNewRaces: RaceEnum[] = [...burningCrusadeNewPlayableRaces];
+const burningCrusadeNewPlayableRaces: CharacterRaceEnum[] = [];
+const burningCrusadeNewRaces: CharacterRaceEnum[] = [...burningCrusadeNewPlayableRaces];
 
 export class BurningCrusadeRaces implements IRaceInExpansion {
     static NewRaces = burningCrusadeNewRaces;

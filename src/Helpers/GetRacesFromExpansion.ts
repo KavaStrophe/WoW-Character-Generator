@@ -1,105 +1,111 @@
-import { ExpansionOrderDictionary } from "Resources/Dictionaries/ExpansionOrderDictionary/ExpansionOrderDictionary";
+import { GetLatestExpansionFactory } from "Factories/Implementations/GetLatestExpansionFactory";
 import { RacesInExpansionsDictionary } from "Resources/Dictionaries/RaceInExpansionDictionaries/Implementations/RacesInExpansionsDictionary";
-import { ExpansionEnum } from "Resources/Enums/ExpansionEnum";
-import { RaceEnum } from "Resources/Enums/RaceEnum";
+import { GameExpansionEnum } from "Resources/Enums/GameEnums/GameExpansionEnum";
+import { CharacterRaceEnum } from "Resources/Enums/CharacterEnums/CharacterRaceEnum";
 
-export const GetNewPlayableRacesFromExpansion = (expansion: ExpansionEnum):RaceEnum[] => {
+const getLatestExpansion = ():GameExpansionEnum =>  {
+    const factory = new GetLatestExpansionFactory();
+    const queryHandler = factory.Get();
+    return queryHandler.Execute();
+}
+
+export const GetNewPlayableRacesFromExpansion = (expansion: GameExpansionEnum):CharacterRaceEnum[] => {
     switch(expansion){
-        case ExpansionEnum.Vanilla:
+        case GameExpansionEnum.Vanilla:
             return RacesInExpansionsDictionary.Vanilla.NewPlayableRaces;
-        case ExpansionEnum.BurningCrusade:
+        case GameExpansionEnum.BurningCrusade:
             return RacesInExpansionsDictionary.BurningCrusade.NewPlayableRaces;
-        case ExpansionEnum.WrathOfTheLichKing:
+        case GameExpansionEnum.WrathOfTheLichKing:
             return RacesInExpansionsDictionary.WrathOfTheLichKing.NewPlayableRaces;
-        case ExpansionEnum.Cataclysm:
+        case GameExpansionEnum.Cataclysm:
             return RacesInExpansionsDictionary.Cataclysm.NewPlayableRaces;
-        case ExpansionEnum.MistsOfPandaria:
+        case GameExpansionEnum.MistsOfPandaria:
             return RacesInExpansionsDictionary.MistsOfPandaria.NewPlayableRaces;
-        case ExpansionEnum.WarlordsOfDraenor:
+        case GameExpansionEnum.WarlordsOfDraenor:
             return RacesInExpansionsDictionary.WarlordsOfDraenor.NewPlayableRaces;
-        case ExpansionEnum.Legion:
+        case GameExpansionEnum.Legion:
             return RacesInExpansionsDictionary.Legion.NewPlayableRaces;
-        case ExpansionEnum.BattleForAzeroth:
+        case GameExpansionEnum.BattleForAzeroth:
             return RacesInExpansionsDictionary.BattleForAzeroth.NewPlayableRaces;
-        case ExpansionEnum.ShadowLands:
+        case GameExpansionEnum.ShadowLands:
             return RacesInExpansionsDictionary.ShadowLands.NewPlayableRaces;
         default:
-            return GetNewPlayableRacesFromExpansion(ExpansionOrderDictionary.GetLatestExpansion());
+            return GetNewPlayableRacesFromExpansion(getLatestExpansion());
     }
 }
 
 
-export const GetNewRacesFromExpansion = (expansion: ExpansionEnum):RaceEnum[] => {
+export const GetNewRacesFromExpansion = (expansion: GameExpansionEnum):CharacterRaceEnum[] => {
     switch(expansion){
-        case ExpansionEnum.Vanilla:
+        case GameExpansionEnum.Vanilla:
             return RacesInExpansionsDictionary.Vanilla.NewRaces;
-        case ExpansionEnum.BurningCrusade:
+        case GameExpansionEnum.BurningCrusade:
             return RacesInExpansionsDictionary.BurningCrusade.NewRaces;
-        case ExpansionEnum.WrathOfTheLichKing:
+        case GameExpansionEnum.WrathOfTheLichKing:
             return RacesInExpansionsDictionary.WrathOfTheLichKing.NewRaces;
-        case ExpansionEnum.Cataclysm:
+        case GameExpansionEnum.Cataclysm:
             return RacesInExpansionsDictionary.Cataclysm.NewRaces;
-        case ExpansionEnum.MistsOfPandaria:
+        case GameExpansionEnum.MistsOfPandaria:
             return RacesInExpansionsDictionary.MistsOfPandaria.NewRaces;
-        case ExpansionEnum.WarlordsOfDraenor:
+        case GameExpansionEnum.WarlordsOfDraenor:
             return RacesInExpansionsDictionary.WarlordsOfDraenor.NewRaces;
-        case ExpansionEnum.Legion:
+        case GameExpansionEnum.Legion:
             return RacesInExpansionsDictionary.Legion.NewRaces;
-        case ExpansionEnum.BattleForAzeroth:
+        case GameExpansionEnum.BattleForAzeroth:
             return RacesInExpansionsDictionary.BattleForAzeroth.NewRaces;
-        case ExpansionEnum.ShadowLands:
+        case GameExpansionEnum.ShadowLands:
             return RacesInExpansionsDictionary.ShadowLands.NewRaces;
         default:
-            return GetNewRacesFromExpansion(ExpansionOrderDictionary.GetLatestExpansion());
+            return GetNewRacesFromExpansion(getLatestExpansion());
     }
 }
 
-export const GetAvailableRacesFromExpansion = (expansion: ExpansionEnum):RaceEnum[] =>  {
+export const GetAvailableRacesFromExpansion = (expansion: GameExpansionEnum):CharacterRaceEnum[] =>  {
     switch(expansion){
-        case ExpansionEnum.Vanilla:
+        case GameExpansionEnum.Vanilla:
             return RacesInExpansionsDictionary.Vanilla.AvailableRaces;
-        case ExpansionEnum.BurningCrusade:
+        case GameExpansionEnum.BurningCrusade:
             return RacesInExpansionsDictionary.BurningCrusade.AvailableRaces;
-        case ExpansionEnum.WrathOfTheLichKing:
+        case GameExpansionEnum.WrathOfTheLichKing:
             return RacesInExpansionsDictionary.WrathOfTheLichKing.AvailableRaces;
-        case ExpansionEnum.Cataclysm:
+        case GameExpansionEnum.Cataclysm:
             return RacesInExpansionsDictionary.Cataclysm.AvailableRaces;
-        case ExpansionEnum.MistsOfPandaria:
+        case GameExpansionEnum.MistsOfPandaria:
             return RacesInExpansionsDictionary.MistsOfPandaria.AvailableRaces;
-        case ExpansionEnum.WarlordsOfDraenor:
+        case GameExpansionEnum.WarlordsOfDraenor:
             return RacesInExpansionsDictionary.WarlordsOfDraenor.AvailableRaces;
-        case ExpansionEnum.Legion:
+        case GameExpansionEnum.Legion:
             return RacesInExpansionsDictionary.Legion.AvailableRaces;
-        case ExpansionEnum.BattleForAzeroth:
+        case GameExpansionEnum.BattleForAzeroth:
             return RacesInExpansionsDictionary.BattleForAzeroth.AvailableRaces;
-        case ExpansionEnum.ShadowLands:
+        case GameExpansionEnum.ShadowLands:
             return RacesInExpansionsDictionary.ShadowLands.AvailableRaces;
         default:
-            return GetAvailableRacesFromExpansion(ExpansionOrderDictionary.GetLatestExpansion());
+            return GetAvailableRacesFromExpansion(getLatestExpansion());
     }
 }
 
-export const GetAvailablePlayableRacesFromExpansion = (expansion: ExpansionEnum):RaceEnum[] =>  {
+export const GetAvailablePlayableRacesFromExpansion = (expansion: GameExpansionEnum):CharacterRaceEnum[] =>  {
     switch(expansion){
-        case ExpansionEnum.Vanilla:
+        case GameExpansionEnum.Vanilla:
             return RacesInExpansionsDictionary.Vanilla.AvailablePlayableRaces;
-        case ExpansionEnum.BurningCrusade:
+        case GameExpansionEnum.BurningCrusade:
             return RacesInExpansionsDictionary.BurningCrusade.AvailablePlayableRaces;
-        case ExpansionEnum.WrathOfTheLichKing:
+        case GameExpansionEnum.WrathOfTheLichKing:
             return RacesInExpansionsDictionary.WrathOfTheLichKing.AvailablePlayableRaces;
-        case ExpansionEnum.Cataclysm:
+        case GameExpansionEnum.Cataclysm:
             return RacesInExpansionsDictionary.Cataclysm.AvailablePlayableRaces;
-        case ExpansionEnum.MistsOfPandaria:
+        case GameExpansionEnum.MistsOfPandaria:
             return RacesInExpansionsDictionary.MistsOfPandaria.AvailablePlayableRaces;
-        case ExpansionEnum.WarlordsOfDraenor:
+        case GameExpansionEnum.WarlordsOfDraenor:
             return RacesInExpansionsDictionary.WarlordsOfDraenor.AvailablePlayableRaces;
-        case ExpansionEnum.Legion:
+        case GameExpansionEnum.Legion:
             return RacesInExpansionsDictionary.Legion.AvailablePlayableRaces;
-        case ExpansionEnum.BattleForAzeroth:
+        case GameExpansionEnum.BattleForAzeroth:
             return RacesInExpansionsDictionary.BattleForAzeroth.AvailablePlayableRaces;
-        case ExpansionEnum.ShadowLands:
+        case GameExpansionEnum.ShadowLands:
             return RacesInExpansionsDictionary.ShadowLands.AvailablePlayableRaces;
         default:
-            return GetAvailablePlayableRacesFromExpansion(ExpansionOrderDictionary.GetLatestExpansion());
+            return GetAvailablePlayableRacesFromExpansion(getLatestExpansion());
     }
 }

@@ -1,8 +1,8 @@
 import * as DwarfNameParts from 'Resources/Lists/NameLists/DwarfNamePartsList';
 import {IGenerateNameQueryHandler} from 'QueryHandlers/GenerateNameQueryHandlers/IGenerateNameQueryHandler'
-import { GenderEnum } from 'Resources/Enums/GenderEnum'
-import { NameLengthEnum } from 'Resources/Enums/NameLengthEnum';
-import { GenerateNameQuery } from 'Resources/Models/GenerateNameQuery';
+import { CharacterGenderEnum } from 'Resources/Enums/CharacterEnums/CharacterGenderEnum'
+import { CharacterNameLengthEnum } from 'Resources/Enums/CharacterEnums/CharacterNameLengthEnum';
+import { GenerateNameQuery } from 'Resources/Models/Queries/GenerateNameQuery';
 import { GetRandomElementOfArray } from 'Helpers/GetRandomElementOfArray';
 import { AvailableNameLengthsList } from 'Resources/Lists/AvailableNameLengthsList';
 import { CharacterIdentity } from 'Resources/Models/CharacterIdentity';
@@ -31,16 +31,16 @@ export class GenerateDwarfNameQueryHandler implements IGenerateNameQueryHandler 
         return `${firstPart}${lastPart}`
     }
 
-    private GetFirstName(gender: GenderEnum, nameLength: NameLengthEnum){
+    private GetFirstName(gender: CharacterGenderEnum, nameLength: CharacterNameLengthEnum){
         const nameParts = this.GetNamePartsByGender(gender);
 
-        if(nameLength === NameLengthEnum.NotSpecified)
+        if(nameLength === CharacterNameLengthEnum.NotSpecified)
             nameLength = GetRandomElementOfArray(AvailableNameLengthsList);
             
         switch(nameLength){
-            case NameLengthEnum.Short:
+            case CharacterNameLengthEnum.Short:
                 return this.GetShortName(nameParts);
-            case NameLengthEnum.Medium:
+            case CharacterNameLengthEnum.Medium:
                 return this.GetMediumName(nameParts);
             default:
                 return this.GetLongName(nameParts);
@@ -109,7 +109,7 @@ export class GenerateDwarfNameQueryHandler implements IGenerateNameQueryHandler 
         return `${partOne}${partTwo}${partThree}${partFour}${partFive}${partSix}${partSeven}`;
     }
 
-    private GetNamePartsByGender(gender: GenderEnum):string[][]{
+    private GetNamePartsByGender(gender: CharacterGenderEnum):string[][]{
         let partOne:string[];
         let partTwo:string[];
         let partThree:string[];
@@ -118,7 +118,7 @@ export class GenerateDwarfNameQueryHandler implements IGenerateNameQueryHandler 
         let partSix:string[];
 
         switch(gender){
-            case GenderEnum.Female:
+            case CharacterGenderEnum.Female:
                 partOne = DwarfNameParts.DwarfFemaleFirstNamePartTypeOne;
                 partTwo = DwarfNameParts.DwarfFemaleFirstNamePartTypeTwo;
                 partThree = DwarfNameParts.DwarfFemaleFirstNamePartTypeThree;
@@ -126,7 +126,7 @@ export class GenerateDwarfNameQueryHandler implements IGenerateNameQueryHandler 
                 partFive = DwarfNameParts.DwarfFemaleFirstNamePartTypeFive;
                 partSix = DwarfNameParts.DwarfFemaleFirstNamePartTypeSix;
                 break;
-            case GenderEnum.Male:
+            case CharacterGenderEnum.Male:
                 partOne = DwarfNameParts.DwarfMaleFirstNamePartTypeOne;
                 partTwo = DwarfNameParts.DwarfMaleFirstNamePartTypeTwo;
                 partThree = DwarfNameParts.DwarfMaleFirstNamePartTypeThree;

@@ -1,3 +1,3 @@
-import { GenderEnum } from "Resources/Enums/GenderEnum";
+import { CharacterGenderEnum } from "Resources/Enums/CharacterEnums/CharacterGenderEnum";
 
-export const AvailableGendersList = [GenderEnum.Female, GenderEnum.Male, GenderEnum.NotSpecified];
+export const AvailableGendersList = [CharacterGenderEnum.Female, CharacterGenderEnum.Male, CharacterGenderEnum.NotSpecified];

@@ -1,30 +1,30 @@
 import { UnknownExpansionError } from 'Errors/UnknownExpansionError';
 import {IGetRacesFromExpansionQueryHandler} from 'QueryHandlers/GetRacesFromExpansionQueryHandlers/IGetRacesFromExpansionQueryHandler'
 import { RacesInExpansionsDictionary } from 'Resources/Dictionaries/RaceInExpansionDictionaries/Implementations/RacesInExpansionsDictionary';
-import { ExpansionEnum } from 'Resources/Enums/ExpansionEnum';
-import { RaceEnum } from 'Resources/Enums/RaceEnum';
-import { GetRacesFromExpansionQuery } from 'Resources/Models/GetRacesFromExpansionQuery';
+import { GameExpansionEnum } from 'Resources/Enums/GameEnums/GameExpansionEnum';
+import { CharacterRaceEnum } from 'Resources/Enums/CharacterEnums/CharacterRaceEnum';
+import { GetRacesFromExpansionQuery } from 'Resources/Models/Queries/GetRacesFromExpansionQuery';
 
 export class GetNewPlayableRacesFromExpansionQueryHandler implements IGetRacesFromExpansionQueryHandler {
-    Execute(query: GetRacesFromExpansionQuery): RaceEnum[] {
+    Execute(query: GetRacesFromExpansionQuery): CharacterRaceEnum[] {
         switch(query.expansion){
-            case ExpansionEnum.Vanilla:
+            case GameExpansionEnum.Vanilla:
                 return RacesInExpansionsDictionary.Vanilla.NewPlayableRaces;
-            case ExpansionEnum.BurningCrusade:
+            case GameExpansionEnum.BurningCrusade:
                 return RacesInExpansionsDictionary.BurningCrusade.NewPlayableRaces;
-            case ExpansionEnum.WrathOfTheLichKing:
+            case GameExpansionEnum.WrathOfTheLichKing:
                 return RacesInExpansionsDictionary.WrathOfTheLichKing.NewPlayableRaces;
-            case ExpansionEnum.Cataclysm:
+            case GameExpansionEnum.Cataclysm:
                 return RacesInExpansionsDictionary.Cataclysm.NewPlayableRaces;
-            case ExpansionEnum.MistsOfPandaria:
+            case GameExpansionEnum.MistsOfPandaria:
                 return RacesInExpansionsDictionary.MistsOfPandaria.NewPlayableRaces;
-            case ExpansionEnum.WarlordsOfDraenor:
+            case GameExpansionEnum.WarlordsOfDraenor:
                 return RacesInExpansionsDictionary.WarlordsOfDraenor.NewPlayableRaces;
-            case ExpansionEnum.Legion:
+            case GameExpansionEnum.Legion:
                 return RacesInExpansionsDictionary.Legion.NewPlayableRaces;
-            case ExpansionEnum.BattleForAzeroth:
+            case GameExpansionEnum.BattleForAzeroth:
                 return RacesInExpansionsDictionary.BattleForAzeroth.NewPlayableRaces;
-            case ExpansionEnum.ShadowLands:
+            case GameExpansionEnum.ShadowLands:
                 return RacesInExpansionsDictionary.ShadowLands.NewPlayableRaces;
             default:
                 throw new UnknownExpansionError(query.expansion.toString());

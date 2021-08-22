@@ -1,8 +1,8 @@
 import { IGetLatestExpansionAdapter } from "Adapters/IGetLatestExpansionAdapter";
-import { ExpansionEnum } from "Resources/Enums/ExpansionEnum";
+import { GameExpansionEnum } from "Resources/Enums/GameEnums/GameExpansionEnum";
 
 export class GetLatestExpansionAdapter implements IGetLatestExpansionAdapter {
-    Get(params: void): ExpansionEnum {
+    Get(params: void): GameExpansionEnum {
         throw new Error("Method not implemented.");
     }
     

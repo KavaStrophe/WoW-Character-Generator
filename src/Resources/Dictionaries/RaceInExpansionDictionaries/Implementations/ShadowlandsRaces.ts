@@ -1,9 +1,9 @@
-import { RaceEnum } from "Resources/Enums/RaceEnum";
+import { CharacterRaceEnum } from "Resources/Enums/CharacterEnums/CharacterRaceEnum";
 import { IRaceInExpansion } from "../IRaceInExpansion";
 import { BattleForAzerothRaces } from "./BattleForAzerothRaces";
 
-const shadowlandsNewPlayableRaces: RaceEnum[] = [];
-const shadowlandsNewRaces: RaceEnum[] = [...shadowlandsNewPlayableRaces];
+const shadowlandsNewPlayableRaces: CharacterRaceEnum[] = [];
+const shadowlandsNewRaces: CharacterRaceEnum[] = [...shadowlandsNewPlayableRaces];
 
 export class ShadowlandsRaces implements IRaceInExpansion {
     static NewRaces = shadowlandsNewRaces;

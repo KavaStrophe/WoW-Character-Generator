@@ -1,13 +1,13 @@
-import { ExpansionEnum } from "Resources/Enums/ExpansionEnum";
+import { GameExpansionEnum } from "Resources/Enums/GameEnums/GameExpansionEnum";
 
 export const OrderedExpansionList = [
-        ExpansionEnum.Vanilla,
-        ExpansionEnum.BurningCrusade,
-        ExpansionEnum.WrathOfTheLichKing,
-        ExpansionEnum.Cataclysm,
-        ExpansionEnum.MistsOfPandaria,
-        ExpansionEnum.WarlordsOfDraenor,
-        ExpansionEnum.Legion,
-        ExpansionEnum.BattleForAzeroth,
-        ExpansionEnum.ShadowLands
+        GameExpansionEnum.Vanilla,
+        GameExpansionEnum.BurningCrusade,
+        GameExpansionEnum.WrathOfTheLichKing,
+        GameExpansionEnum.Cataclysm,
+        GameExpansionEnum.MistsOfPandaria,
+        GameExpansionEnum.WarlordsOfDraenor,
+        GameExpansionEnum.Legion,
+        GameExpansionEnum.BattleForAzeroth,
+        GameExpansionEnum.ShadowLands
     ];

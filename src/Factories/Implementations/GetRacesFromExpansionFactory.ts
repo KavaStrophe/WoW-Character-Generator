@@ -5,18 +5,18 @@ import { GetAvailablePlayableRacesFromExpansionQueryHandler } from "QueryHandler
 import { GetAvailableRacesFromExpansionQueryHandler } from "QueryHandlers/GetRacesFromExpansionQueryHandlers/Implementations/GetAvailableRacesFromExpansionQueryHandler";
 import { GetNewPlayableRacesFromExpansionQueryHandler } from "QueryHandlers/GetRacesFromExpansionQueryHandlers/Implementations/GetNewPlayableRacesFromExpansionQueryHandler";
 import { GetNewRacesFromExpansionQueryHandler } from "QueryHandlers/GetRacesFromExpansionQueryHandlers/Implementations/GetNewRacesFromExpansionQueryHandler";
-import { RaceTypeEnum } from "Resources/Enums/RaceTypeEnum";
+import { GameRaceTypeEnum } from "Resources/Enums/GameEnums/GameRaceTypeEnum";
 
 export class GetRacesFromExpansionFactory implements IGetRacesFromExpansionQueryHandlerFactory {
-    Get(params: RaceTypeEnum): IGetRacesFromExpansionQueryHandler {
+    Get(params: GameRaceTypeEnum): IGetRacesFromExpansionQueryHandler {
         switch(params){
-            case RaceTypeEnum.AvailablePlayableRace:
+            case GameRaceTypeEnum.AvailablePlayableRace:
                 return new GetAvailablePlayableRacesFromExpansionQueryHandler();
-            case RaceTypeEnum.AvailableRace:
+            case GameRaceTypeEnum.AvailableRace:
                 return new GetAvailableRacesFromExpansionQueryHandler();
-            case RaceTypeEnum.NewPlayableRace:
+            case GameRaceTypeEnum.NewPlayableRace:
                 return new GetNewPlayableRacesFromExpansionQueryHandler();
-            case RaceTypeEnum.NewRace:
+            case GameRaceTypeEnum.NewRace:
                 return new GetNewRacesFromExpansionQueryHandler();
             default:
                 throw new UnknownRaceTypeError(params.toString())

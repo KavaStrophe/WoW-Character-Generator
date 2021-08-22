@@ -1,4 +1,4 @@
-export enum ExpansionEnum {
+export enum GameExpansionEnum {
     NotSpecified,
     Vanilla,
     BurningCrusade,

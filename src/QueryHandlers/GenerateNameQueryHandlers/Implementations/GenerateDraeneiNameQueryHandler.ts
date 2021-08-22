@@ -5,8 +5,8 @@ import {
     DraeneiFemaleFirstNameEndParts
 } from 'Resources/Lists/NameLists/DraeneiNamePartsList'
 import {IGenerateNameQueryHandler} from 'QueryHandlers/GenerateNameQueryHandlers/IGenerateNameQueryHandler'
-import { GenderEnum } from 'Resources/Enums/GenderEnum'
-import { GenerateNameQuery } from 'Resources/Models/GenerateNameQuery'
+import { CharacterGenderEnum } from 'Resources/Enums/CharacterEnums/CharacterGenderEnum'
+import { GenerateNameQuery } from 'Resources/Models/Queries/GenerateNameQuery'
 import { CharacterIdentity } from 'Resources/Models/CharacterIdentity'
 
 export class GenerateDraeneiNameQueryHandler implements IGenerateNameQueryHandler {
@@ -25,17 +25,17 @@ export class GenerateDraeneiNameQueryHandler implements IGenerateNameQueryHandle
         
     }
 
-    private GetNameEndParts(gender:GenderEnum):string[]{
+    private GetNameEndParts(gender:CharacterGenderEnum):string[]{
         let nameParts: string[];
 
         switch(gender){
-            case GenderEnum.Female:
+            case CharacterGenderEnum.Female:
                 nameParts = DraeneiFemaleFirstNameEndParts;
                 break;
-            case GenderEnum.Male:
+            case CharacterGenderEnum.Male:
                 nameParts = DraeneiMaleFirstNameEndParts;
                 break;
-            case GenderEnum.NotSpecified:
+            case CharacterGenderEnum.NotSpecified:
                 nameParts = [...DraeneiMaleFirstNameEndParts, ...DraeneiFemaleFirstNameEndParts];
                 break;
         }
@@ -43,17 +43,17 @@ export class GenerateDraeneiNameQueryHandler implements IGenerateNameQueryHandle
         return nameParts;
     }
 
-    private GetNameStartParts(gender:GenderEnum):string[]{
+    private GetNameStartParts(gender:CharacterGenderEnum):string[]{
         let nameParts: string[];
 
         switch(gender){
-            case GenderEnum.Female:
+            case CharacterGenderEnum.Female:
                 nameParts = DraeneiFemaleFirstNameStartParts;
                 break;
-            case GenderEnum.Male:
+            case CharacterGenderEnum.Male:
                 nameParts = DraeneiMaleFirstNameStartParts;
                 break;
-            case GenderEnum.NotSpecified:
+            case CharacterGenderEnum.NotSpecified:
                 nameParts = [...DraeneiMaleFirstNameStartParts, ...DraeneiFemaleFirstNameStartParts];
                 break;
         }

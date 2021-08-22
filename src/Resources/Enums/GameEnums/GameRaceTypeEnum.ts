@@ -1,4 +1,4 @@
-export enum RaceTypeEnum {
+export enum GameRaceTypeEnum {
     NewRace,
     NewPlayableRace,
     AvailableRace,

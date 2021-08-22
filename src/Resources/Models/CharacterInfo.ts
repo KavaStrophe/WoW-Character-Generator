@@ -1,13 +1,13 @@
-import { ExpansionEnum } from "Resources/Enums/ExpansionEnum";
-import { GenderEnum } from "Resources/Enums/GenderEnum";
-import { RaceEnum } from "Resources/Enums/RaceEnum";
+import { GameExpansionEnum } from "Resources/Enums/GameEnums/GameExpansionEnum";
+import { CharacterGenderEnum } from "Resources/Enums/CharacterEnums/CharacterGenderEnum";
+import { CharacterRaceEnum } from "Resources/Enums/CharacterEnums/CharacterRaceEnum";
 import { CharacterIdentity } from "./CharacterIdentity";
 import { CharacterInfoIncomplete } from "./CharacterInfoIncomplete";
 
 export interface CharacterInfo extends CharacterInfoIncomplete{
     identity: CharacterIdentity;
     age: number;
-    gender: GenderEnum;
-    race: RaceEnum;
-    expansion: ExpansionEnum;
+    gender: CharacterGenderEnum;
+    race: CharacterRaceEnum;
+    expansion: GameExpansionEnum;
 }

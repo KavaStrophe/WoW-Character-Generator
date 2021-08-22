@@ -1,3 +1,3 @@
-import { NameLengthEnum } from "Resources/Enums/NameLengthEnum";
+import { CharacterNameLengthEnum } from "Resources/Enums/CharacterEnums/CharacterNameLengthEnum";
 
-export const AvailableNameLengthsList = [NameLengthEnum.Short, NameLengthEnum.Medium, NameLengthEnum.Long];
+export const AvailableNameLengthsList = [CharacterNameLengthEnum.Short, CharacterNameLengthEnum.Medium, CharacterNameLengthEnum.Long];

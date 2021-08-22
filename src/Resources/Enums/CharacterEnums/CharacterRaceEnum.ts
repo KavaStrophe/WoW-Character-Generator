@@ -1,4 +1,4 @@
-export enum RaceEnum {
+export enum CharacterRaceEnum {
     NotSpecified,
     Draenei,
     Dwarf,

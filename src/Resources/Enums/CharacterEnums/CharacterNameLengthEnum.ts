@@ -1,4 +1,4 @@
-export enum NameLengthEnum {
+export enum CharacterNameLengthEnum {
     Short,
     Medium,
     Long,

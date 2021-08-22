@@ -1,9 +1,9 @@
-import { RaceEnum } from "Resources/Enums/RaceEnum";
+import { CharacterRaceEnum } from "Resources/Enums/CharacterEnums/CharacterRaceEnum";
 import { IRaceInExpansion } from "../IRaceInExpansion";
 import { WrathOfTheLichKingRaces } from "./WrathOfTheLichKingRaces";
 
-const cataclysmNewPlayableRaces: RaceEnum[] = [];
-const cataclysmNewRaces: RaceEnum[] = [...cataclysmNewPlayableRaces];
+const cataclysmNewPlayableRaces: CharacterRaceEnum[] = [];
+const cataclysmNewRaces: CharacterRaceEnum[] = [...cataclysmNewPlayableRaces];
 
 export class CataclysmRaces implements IRaceInExpansion {
     static NewRaces = cataclysmNewRaces;
