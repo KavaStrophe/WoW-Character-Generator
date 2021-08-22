@@ -6,6 +6,8 @@ import { GenerateNameQuery } from 'Resources/Models/Queries/GenerateNameQuery';
 import { CharacterInfoComponent } from 'Components/CharacterInfo/CharacterInfoComponent';
 import { CharacterInfoGeneratorAdapter } from 'Adapters/Implementations/GenerateCharacterInfoAdapter';
 import { GameRaceTypeEnum } from 'Resources/Enums/GameEnums/GameRaceTypeEnum';
+import { AgeRangeComponent } from 'Components/AgeRanges/AgeRangesComponent';
+import { CharacterStoryStepEnum } from 'Resources/Enums/CharacterEnums/CharacterStoryStepEnum';
 
 export const HomePage = () => {
 
@@ -19,10 +21,15 @@ export const HomePage = () => {
         raceType: GameRaceTypeEnum.AvailableRace
     });
     
+    const onChange = (step: CharacterStoryStepEnum) => {
+        console.log(step)
+    }
+
     return ( 
         <>
             <p>{maleName.fullName}</p>
             <CharacterInfoComponent characterInfo={characterInfo}/>
+            <AgeRangeComponent race={CharacterRaceEnum.Dwarf} onChange={onChange}/>
         </>
     )
 }
