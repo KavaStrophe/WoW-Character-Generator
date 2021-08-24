@@ -1,7 +1,12 @@
-import { GameRaceTypeEnum } from "Resources/Enums/GameEnums/GameRaceTypeEnum";
-import { CharacterInfoIncomplete } from "../CharacterInfoIncomplete";
+import { GameRaceType } from "Resources/Enums/Game/GameRaceType";
+import { CharacterInfoIncomplete } from "Resources/Models/Characters/CharacterInfoIncomplete";
 
-export interface GenerateCharacterInfoQuery {
+export class GenerateCharacterInfoQuery {
     preFilledCharacterInfo: CharacterInfoIncomplete;
-    raceType: GameRaceTypeEnum
+    raceType: GameRaceType;
+
+    constructor(preFilledCharacterInfo: CharacterInfoIncomplete, raceType: GameRaceType){
+        this.preFilledCharacterInfo = preFilledCharacterInfo;
+        this.raceType = raceType;
+    }
 }

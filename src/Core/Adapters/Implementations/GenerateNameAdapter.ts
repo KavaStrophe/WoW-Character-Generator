@@ -1,6 +1,6 @@
 import { IGenerateNameAdapter } from "Core/Adapters/IGenerateNameAdapter";
 import { GenerateNameQueryHandlerFactory } from "Core/Factories/Implementations/GenerateNameQueryHandlerFactory";
-import { CharacterIdentity } from "Resources/Models/CharacterIdentity";
+import { CharacterIdentity } from "Resources/Models/Characters/CharacterIdentity";
 import { GenerateNameQuery } from "Resources/Models/Queries/GenerateNameQuery";
 
 export class GenerateNameAdapter implements IGenerateNameAdapter {

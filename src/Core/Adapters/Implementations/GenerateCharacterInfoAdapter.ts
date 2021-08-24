@@ -1,6 +1,6 @@
 import { IGenerateCharacterInfoAdapter } from "Core/Adapters/IGenerateCharacterInfoAdapter";
 import { GenerateCharacterInfoQueryHandlerFactory } from "Core/Factories/Implementations/GenerateCharacterInfoQueryHandlerFactory";
-import { CharacterInfo } from "Resources/Models/CharacterInfo";
+import { CharacterInfo } from "Resources/Models/Characters/CharacterInfo";
 import { GenerateCharacterInfoQuery } from "Resources/Models/Queries/GenerateCharacterInfoQuery";
 
 export class CharacterInfoGeneratorAdapter implements IGenerateCharacterInfoAdapter {

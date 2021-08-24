@@ -1,4 +1,4 @@
-import { CharacterInfo } from "Resources/Models/CharacterInfo";
+import { CharacterInfo } from "Resources/Models/Characters/CharacterInfo";
 import { GenerateCharacterInfoQuery } from "Resources/Models/Queries/GenerateCharacterInfoQuery";
 import { IAdapter } from "./IAdapter";
 

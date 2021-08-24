@@ -1,27 +1,26 @@
-import React from 'react';
 import { GenerateNameAdapter } from 'Core/Adapters/Implementations/GenerateNameAdapter';
-import { CharacterGenderEnum } from 'Resources/Enums/CharacterEnums/CharacterGenderEnum';
-import { CharacterRaceEnum } from 'Resources/Enums/CharacterEnums/CharacterRaceEnum';
+import { CharacterGender } from 'Resources/Enums/Character/CharacterGender';
+import { CharacterRace } from 'Resources/Enums/Character/CharacterRace';
 import { GenerateNameQuery } from 'Resources/Models/Queries/GenerateNameQuery';
-import { CharacterInfoComponent } from 'Components/CharacterInfo/CharacterInfoComponent';
+import { CharacterInfoComponent } from 'Website/Components/CharacterInfo/CharacterInfoComponent';
 import { CharacterInfoGeneratorAdapter } from 'Core/Adapters/Implementations/GenerateCharacterInfoAdapter';
-import { GameRaceTypeEnum } from 'Resources/Enums/GameEnums/GameRaceTypeEnum';
-import { AgeRangeComponent } from 'Components/AgeRanges/AgeRangesComponent';
-import { CharacterStoryStepEnum } from 'Resources/Enums/CharacterEnums/CharacterStoryStepEnum';
+import { GameRaceType } from 'Resources/Enums/Game/GameRaceType';
+import { AgeRangeComponent } from 'Website/Components/AgeRanges/AgeRangesComponent';
+import { CharacterStoryStep } from 'Resources/Enums/Character/CharacterStoryStep';
 
 export const HomePage = () => {
 
 
     const nameAdapter = new GenerateNameAdapter();
     const characterInfoAdapter = new CharacterInfoGeneratorAdapter();
-    const maleName = nameAdapter.Get(new GenerateNameQuery(CharacterRaceEnum.Dwarf, CharacterGenderEnum.Male));
+    const maleName = nameAdapter.Get(new GenerateNameQuery(CharacterRace.Dwarf, CharacterGender.Male));
 
     const characterInfo = characterInfoAdapter.Get({
         preFilledCharacterInfo: {},
-        raceType: GameRaceTypeEnum.AvailableRace
+        raceType: GameRaceType.AvailableRace
     });
     
-    const onChange = (step: CharacterStoryStepEnum) => {
+    const onChange = (step: CharacterStoryStep) => {
         console.log(step)
     }
 
@@ -29,7 +28,7 @@ export const HomePage = () => {
         <>
             <p>{maleName.fullName}</p>
             <CharacterInfoComponent characterInfo={characterInfo}/>
-            <AgeRangeComponent race={CharacterRaceEnum.Dwarf} onChange={onChange}/>
+            <AgeRangeComponent race={CharacterRace.Dwarf} onChange={onChange}/>
         </>
     )
 }

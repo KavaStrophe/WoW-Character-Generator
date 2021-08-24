@@ -1,17 +1,20 @@
 import { GenerateNameQueryHandlerFactory } from "Core/Factories/Implementations/GenerateNameQueryHandlerFactory";
-import { GetLatestExpansionFactory } from "Core/Factories/Implementations/GetLatestExpansionFactory";
-import { GetRacesFromExpansionFactory } from "Core/Factories/Implementations/GetRacesFromExpansionFactory";
 import { GetRandomElementOfArray } from "Core/Helpers/GetRandomElementOfArray";
-import { GameExpansionEnum } from "Resources/Enums/GameEnums/GameExpansionEnum";
-import { CharacterGenderEnum } from "Resources/Enums/CharacterEnums/CharacterGenderEnum";
-import { CharacterRaceEnum } from "Resources/Enums/CharacterEnums/CharacterRaceEnum";
-import { GameRaceTypeEnum } from "Resources/Enums/GameEnums/GameRaceTypeEnum";
-import { AvailableGendersList } from "Resources/Lists/AvailableGendersList";
-import { AvailableNameLengthsList } from "Resources/Lists/AvailableNameLengthsList";
-import { CharacterIdentity } from "Resources/Models/CharacterIdentity";
-import { CharacterInfo } from "Resources/Models/CharacterInfo";
+import { GameExpansion } from "Resources/Enums/Game/GameExpansion";
+import { CharacterGender } from "Resources/Enums/Character/CharacterGender";
+import { CharacterRace } from "Resources/Enums/Character/CharacterRace";
+import { GameRaceType } from "Resources/Enums/Game/GameRaceType";
+import { AvailableGenders } from "Resources/Lists/AvailableGenders";
+import { AvailableNameLengths } from "Resources/Lists/AvailableNameLengths";
+import { CharacterIdentity } from "Resources/Models/Characters/CharacterIdentity";
 import { GenerateCharacterInfoQuery } from "Resources/Models/Queries/GenerateCharacterInfoQuery";
 import { IGenerateCharacterInfoQueryHandler } from "../IGenerateCharacterInfoQueryHandler";
+import { CharacterInfo } from "Resources/Models/Characters/CharacterInfo";
+import { RacesByExpansionDictionary } from "Resources/Dictionaries/RacesByExpansionDictionary";
+import { GetRacesOfRaceTypeFromRacesInExpansion } from "Core/Helpers/GetRacesOfRaceTypeFromRacesInExpansion";
+import { OrderedExpansions } from "Resources/Lists/OrderedExpansions";
+import { ErrorCode } from "Resources/Enums/System/ErrorCode";
+import { PersonalizedError } from "Core/Errors/PersonalizedError";
 
 export class GenerateCharacterInfoQueryHandler implements IGenerateCharacterInfoQueryHandler {
     public Execute(query: GenerateCharacterInfoQuery): CharacterInfo {
@@ -36,30 +39,31 @@ export class GenerateCharacterInfoQueryHandler implements IGenerateCharacterInfo
         }
     }
 
-    private GetRandomIdentity(gender: CharacterGenderEnum, race: CharacterRaceEnum): CharacterIdentity{
+    private GetRandomIdentity(gender: CharacterGender, race: CharacterRace): CharacterIdentity{
         const queryHandlerFactory = new GenerateNameQueryHandlerFactory();
         const queryHandler = queryHandlerFactory.Get(race);
-        const nameLength = GetRandomElementOfArray(AvailableNameLengthsList);
+        const nameLength = GetRandomElementOfArray(AvailableNameLengths);
 
         return queryHandler.Execute({gender, race, length:nameLength});
     }
 
-    private GetRandomGenre():CharacterGenderEnum{
-        return GetRandomElementOfArray(AvailableGendersList);
+    private GetRandomGenre():CharacterGender{
+        return GetRandomElementOfArray(AvailableGenders);
     }
 
-    private GetRandomRaceFromExpansion(expansion: GameExpansionEnum, raceType: GameRaceTypeEnum): CharacterRaceEnum {
-        const queryHandlerFactory = new GetRacesFromExpansionFactory();
-        const queryHandler = queryHandlerFactory.Get(raceType);
-        const availableRaces = queryHandler.Execute({expansion, raceType});
+    private GetRandomRaceFromExpansion(expansion: GameExpansion, raceType: GameRaceType): CharacterRace {
+        const racesInExpansion = RacesByExpansionDictionary.get(expansion)
+        if(racesInExpansion === undefined) throw new PersonalizedError(ErrorCode.NoRaceRegisteredForExpansion)
+
+        const availableRaces = GetRacesOfRaceTypeFromRacesInExpansion(
+            racesInExpansion,
+            raceType
+        );
 
         return GetRandomElementOfArray(availableRaces);
     }
 
-    private GetLatestExpansion():GameExpansionEnum{
-        const queryHandlerFactory = new GetLatestExpansionFactory();
-        const queryHandler = queryHandlerFactory.Get();
-
-        return queryHandler.Execute();
+    private GetLatestExpansion():GameExpansion{
+        return OrderedExpansions[OrderedExpansions.length - 1];
     }
 }

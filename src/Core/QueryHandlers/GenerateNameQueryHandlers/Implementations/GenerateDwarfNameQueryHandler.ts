@@ -1,16 +1,17 @@
-import * as DwarfNameParts from 'Resources/Lists/NameLists/DwarfNamePartsList';
+import * as DwarfNameParts from 'Resources/Lists/Names/DwarfNameParts';
 import {IGenerateNameQueryHandler} from 'Core/QueryHandlers/GenerateNameQueryHandlers/IGenerateNameQueryHandler'
-import { CharacterGenderEnum } from 'Resources/Enums/CharacterEnums/CharacterGenderEnum'
-import { CharacterNameLengthEnum } from 'Resources/Enums/CharacterEnums/CharacterNameLengthEnum';
+import { CharacterGender } from 'Resources/Enums/Character/CharacterGender'
+import { CharacterNameLength } from 'Resources/Enums/Character/CharacterNameLength';
 import { GenerateNameQuery } from 'Resources/Models/Queries/GenerateNameQuery';
 import { GetRandomElementOfArray } from 'Core/Helpers/GetRandomElementOfArray';
-import { AvailableNameLengthsList } from 'Resources/Lists/AvailableNameLengthsList';
-import { CharacterIdentity } from 'Resources/Models/CharacterIdentity';
+import { AvailableNameLengths } from 'Resources/Lists/AvailableNameLengths';
+import { CharacterIdentity } from 'Resources/Models/Characters/CharacterIdentity';
+import { GetStringWithFirstLetterCapitalized } from 'Core/Helpers/GetStringWithFirstLetterCapitalized';
 
 export class GenerateDwarfNameQueryHandler implements IGenerateNameQueryHandler {
     public Execute(query: GenerateNameQuery):CharacterIdentity {
-        const lastName = this.GetLastName();
-        const firstName = this.GetFirstName(query.gender, query.length);
+        const lastName = GetStringWithFirstLetterCapitalized(this.GetLastName());
+        const firstName = GetStringWithFirstLetterCapitalized(this.GetFirstName(query.gender, query.length));
 
         return {
             fullName: `${firstName} ${lastName}`,
@@ -31,16 +32,16 @@ export class GenerateDwarfNameQueryHandler implements IGenerateNameQueryHandler 
         return `${firstPart}${lastPart}`
     }
 
-    private GetFirstName(gender: CharacterGenderEnum, nameLength: CharacterNameLengthEnum){
+    private GetFirstName(gender: CharacterGender, nameLength: CharacterNameLength){
         const nameParts = this.GetNamePartsByGender(gender);
 
-        if(nameLength === CharacterNameLengthEnum.NotSpecified)
-            nameLength = GetRandomElementOfArray(AvailableNameLengthsList);
+        if(nameLength === CharacterNameLength.NotSpecified)
+            nameLength = GetRandomElementOfArray(AvailableNameLengths);
             
         switch(nameLength){
-            case CharacterNameLengthEnum.Short:
+            case CharacterNameLength.Short:
                 return this.GetShortName(nameParts);
-            case CharacterNameLengthEnum.Medium:
+            case CharacterNameLength.Medium:
                 return this.GetMediumName(nameParts);
             default:
                 return this.GetLongName(nameParts);
@@ -109,7 +110,7 @@ export class GenerateDwarfNameQueryHandler implements IGenerateNameQueryHandler 
         return `${partOne}${partTwo}${partThree}${partFour}${partFive}${partSix}${partSeven}`;
     }
 
-    private GetNamePartsByGender(gender: CharacterGenderEnum):string[][]{
+    private GetNamePartsByGender(gender: CharacterGender):string[][]{
         let partOne:string[];
         let partTwo:string[];
         let partThree:string[];
@@ -118,7 +119,7 @@ export class GenerateDwarfNameQueryHandler implements IGenerateNameQueryHandler 
         let partSix:string[];
 
         switch(gender){
-            case CharacterGenderEnum.Female:
+            case CharacterGender.Female:
                 partOne = DwarfNameParts.DwarfFemaleFirstNamePartTypeOne;
                 partTwo = DwarfNameParts.DwarfFemaleFirstNamePartTypeTwo;
                 partThree = DwarfNameParts.DwarfFemaleFirstNamePartTypeThree;
@@ -126,7 +127,7 @@ export class GenerateDwarfNameQueryHandler implements IGenerateNameQueryHandler 
                 partFive = DwarfNameParts.DwarfFemaleFirstNamePartTypeFive;
                 partSix = DwarfNameParts.DwarfFemaleFirstNamePartTypeSix;
                 break;
-            case CharacterGenderEnum.Male:
+            case CharacterGender.Male:
                 partOne = DwarfNameParts.DwarfMaleFirstNamePartTypeOne;
                 partTwo = DwarfNameParts.DwarfMaleFirstNamePartTypeTwo;
                 partThree = DwarfNameParts.DwarfMaleFirstNamePartTypeThree;

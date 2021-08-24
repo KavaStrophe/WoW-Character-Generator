@@ -1,16 +1,6 @@
-
-import { GetAgeRangePerStoryStepForRaceFactory } from "Core/Factories/Implementations/GetAgeRangePerStoryStepForRaceFactory";
-import { useEffect, useState } from "react";
-import { RaceToStringDictionary } from "Resources/Dictionaries/EntitiesToStringDictionaries/Implementations/RacesToStringDictionary";
-import { IStoryStepAgesForRaceDictionary } from "Resources/Dictionaries/StoryStepAgesForRaceDictionaries/IStoryStepAgesForRaceDictionary";
-import { CharacterRaceEnum } from "Resources/Enums/CharacterEnums/CharacterRaceEnum";
-import { CharacterStoryStepEnum } from "Resources/Enums/CharacterEnums/CharacterStoryStepEnum";
-
-interface IAgeRangeComponentParameters {
-    race: CharacterRaceEnum;
-    onChange: (step: CharacterStoryStepEnum) => void;
-};
-
+import { AgesByraceDictionary } from "Resources/Dictionaries/AgesByRaceDictionary";
+import { CharacterRace } from "Resources/Enums/Character/CharacterRace";
+import { CharacterStoryStep } from "Resources/Enums/Character/CharacterStoryStep";
 const AgeRangeLineComponent = (params: IAgeRangeLineComponentParameters) => {
     const onChange = () => {
         params.onChange(params.step);
@@ -25,51 +15,30 @@ const AgeRangeLineComponent = (params: IAgeRangeLineComponentParameters) => {
 }
 
 interface IAgeRangeLineComponentParameters {
-    step: CharacterStoryStepEnum;
+    step: CharacterStoryStep;
     stepName: string;
     stepMin: number;
     stepMax: number | string;
-    onChange: (step:CharacterStoryStepEnum) => void;
+    onChange: (step:CharacterStoryStep) => void;
+};
+interface IAgeRangeComponentParameters {
+    race: CharacterRace;
+    onChange: (step: CharacterStoryStep) => void;
 };
 
-class DefaultAgeRangeComponentState {
-    title: string = "";
-    ageByStep: IStoryStepAgesForRaceDictionary = {
-        limitChildhoodAge: 0,
-        limitTeenagehoodAge: 0,
-        limitAdulthoodAge: 0,
-        limitSeniorhoodAge: 0,
-    };
-    selected: CharacterStoryStepEnum = CharacterStoryStepEnum.Childhood;
-}
 
 export const AgeRangeComponent = (params: IAgeRangeComponentParameters) => {
-    const [state, setState] = useState(new DefaultAgeRangeComponentState())
-
-    useEffect(() => {
-        const raceNameDict = new RaceToStringDictionary();
-        const factory = new GetAgeRangePerStoryStepForRaceFactory();
-        const queryHandler = factory.Get();
-        const ageByStep = queryHandler.Execute({race: params.race});
-
-        const updatedState = {
-            title: raceNameDict.Get(params.race),
-            ageByStep
-        };
-
-        setState({...state, ...updatedState})
-
-        return () => {};
-    }, [params]);
+    const agesOfRace = AgesByraceDictionary.get(params.race);
+    if(agesOfRace === undefined) return (<div>No data</div>)
 
     return (
         <div>
-            <p>Steps in the life of {state.title}s</p>
-            <AgeRangeLineComponent onChange={params.onChange} step={CharacterStoryStepEnum.Childhood} stepName="Child" stepMin={0} stepMax={state.ageByStep.limitChildhoodAge-1} />
-            <AgeRangeLineComponent onChange={params.onChange} step={CharacterStoryStepEnum.Teenagehood} stepName="Teenager" stepMin={state.ageByStep.limitChildhoodAge} stepMax={state.ageByStep.limitTeenagehoodAge-1} />
-            <AgeRangeLineComponent onChange={params.onChange} step={CharacterStoryStepEnum.Adulthood} stepName="Adult" stepMin={state.ageByStep.limitTeenagehoodAge} stepMax={state.ageByStep.limitAdulthoodAge-1} />
-            <AgeRangeLineComponent onChange={params.onChange} step={CharacterStoryStepEnum.Seniorhood} stepName="Senior" stepMin={state.ageByStep.limitAdulthoodAge} stepMax={state.ageByStep.limitSeniorhoodAge-1} />
-            <AgeRangeLineComponent onChange={params.onChange} step={CharacterStoryStepEnum.Antichood} stepName="Antic" stepMin={state.ageByStep.limitSeniorhoodAge} stepMax="???" />
+            <p>Steps in the life of {params.race}s</p>
+            <AgeRangeLineComponent onChange={params.onChange} step={CharacterStoryStep.Childhood} stepName="Child" stepMin={0} stepMax={agesOfRace.endOfChildhoodAge-1} />
+            <AgeRangeLineComponent onChange={params.onChange} step={CharacterStoryStep.Teenagehood} stepName="Teenager" stepMin={agesOfRace.endOfChildhoodAge} stepMax={agesOfRace.endOfTeenagehoodAge-1} />
+            <AgeRangeLineComponent onChange={params.onChange} step={CharacterStoryStep.Adulthood} stepName="Adult" stepMin={agesOfRace.endOfTeenagehoodAge} stepMax={agesOfRace.endOfAdulthoodAge-1} />
+            <AgeRangeLineComponent onChange={params.onChange} step={CharacterStoryStep.Seniorhood} stepName="Senior" stepMin={agesOfRace.endOfAdulthoodAge} stepMax={agesOfRace.endOfSeniorhoodAge-1} />
+            <AgeRangeLineComponent onChange={params.onChange} step={CharacterStoryStep.Antichood} stepName="Antic" stepMin={agesOfRace.endOfSeniorhoodAge} stepMax="???" />
         </div>
     )
 }

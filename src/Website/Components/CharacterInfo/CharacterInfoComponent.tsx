@@ -1,4 +1,4 @@
-import { CharacterInfo } from "Resources/Models/CharacterInfo";
+import { CharacterInfo } from "Resources/Models/Characters/CharacterInfo";
 
 interface ICharacterInfoComponentParameters {
     characterInfo: CharacterInfo

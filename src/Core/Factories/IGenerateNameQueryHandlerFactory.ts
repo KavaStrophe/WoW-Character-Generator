@@ -1,7 +1,7 @@
 import { IGenerateNameQueryHandler } from "Core/QueryHandlers/GenerateNameQueryHandlers/IGenerateNameQueryHandler";
-import { CharacterRaceEnum } from "Resources/Enums/CharacterEnums/CharacterRaceEnum";
+import { CharacterRace } from "Resources/Enums/Character/CharacterRace";
 import { IFactory } from "./IFactory";
 
-export interface IGenerateNameQueryHandlerFactory extends IFactory<CharacterRaceEnum, IGenerateNameQueryHandler> {
-    Get(params: CharacterRaceEnum): IGenerateNameQueryHandler;
+export interface IGenerateNameQueryHandlerFactory extends IFactory<CharacterRace, IGenerateNameQueryHandler> {
+    Get(params: CharacterRace): IGenerateNameQueryHandler;
 }

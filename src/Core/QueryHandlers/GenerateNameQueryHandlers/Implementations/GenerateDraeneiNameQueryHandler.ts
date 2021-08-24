@@ -3,11 +3,12 @@ import {
     DraeneiMaleFirstNameEndParts,
     DraeneiFemaleFirstNameStartParts,
     DraeneiFemaleFirstNameEndParts
-} from 'Resources/Lists/NameLists/DraeneiNamePartsList'
+} from 'Resources/Lists/Names/DraeneiNameParts'
 import {IGenerateNameQueryHandler} from 'Core/QueryHandlers/GenerateNameQueryHandlers/IGenerateNameQueryHandler'
-import { CharacterGenderEnum } from 'Resources/Enums/CharacterEnums/CharacterGenderEnum'
+import { CharacterGender } from 'Resources/Enums/Character/CharacterGender'
 import { GenerateNameQuery } from 'Resources/Models/Queries/GenerateNameQuery'
-import { CharacterIdentity } from 'Resources/Models/CharacterIdentity'
+import { CharacterIdentity } from 'Resources/Models/Characters/CharacterIdentity'
+import { GetStringWithFirstLetterCapitalized } from 'Core/Helpers/GetStringWithFirstLetterCapitalized'
 
 export class GenerateDraeneiNameQueryHandler implements IGenerateNameQueryHandler {
     public Execute(query:GenerateNameQuery):CharacterIdentity {
@@ -16,26 +17,28 @@ export class GenerateDraeneiNameQueryHandler implements IGenerateNameQueryHandle
 
         const startName = nameStartParts[Math.floor(Math.random()*nameStartParts.length)];
         const endName = nameEndParts[Math.floor(Math.random()*nameEndParts.length)];
+        const fullName = GetStringWithFirstLetterCapitalized(`${startName}${endName}`);
+
 
         return {
-            fullName: `${startName}${endName}`,
-            firstName: `${startName}${endName}`,
+            fullName: fullName,
+            firstName: fullName,
             lastName: undefined
         }
         
     }
 
-    private GetNameEndParts(gender:CharacterGenderEnum):string[]{
+    private GetNameEndParts(gender:CharacterGender):string[]{
         let nameParts: string[];
 
         switch(gender){
-            case CharacterGenderEnum.Female:
+            case CharacterGender.Female:
                 nameParts = DraeneiFemaleFirstNameEndParts;
                 break;
-            case CharacterGenderEnum.Male:
+            case CharacterGender.Male:
                 nameParts = DraeneiMaleFirstNameEndParts;
                 break;
-            case CharacterGenderEnum.NotSpecified:
+            case CharacterGender.NotSpecified:
                 nameParts = [...DraeneiMaleFirstNameEndParts, ...DraeneiFemaleFirstNameEndParts];
                 break;
         }
@@ -43,17 +46,17 @@ export class GenerateDraeneiNameQueryHandler implements IGenerateNameQueryHandle
         return nameParts;
     }
 
-    private GetNameStartParts(gender:CharacterGenderEnum):string[]{
+    private GetNameStartParts(gender:CharacterGender):string[]{
         let nameParts: string[];
 
         switch(gender){
-            case CharacterGenderEnum.Female:
+            case CharacterGender.Female:
                 nameParts = DraeneiFemaleFirstNameStartParts;
                 break;
-            case CharacterGenderEnum.Male:
+            case CharacterGender.Male:
                 nameParts = DraeneiMaleFirstNameStartParts;
                 break;
-            case CharacterGenderEnum.NotSpecified:
+            case CharacterGender.NotSpecified:
                 nameParts = [...DraeneiMaleFirstNameStartParts, ...DraeneiFemaleFirstNameStartParts];
                 break;
         }

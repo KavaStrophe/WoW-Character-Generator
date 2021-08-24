@@ -1,15 +1,15 @@
-import { CharacterGenderEnum } from "Resources/Enums/CharacterEnums/CharacterGenderEnum";
-import { CharacterNameLengthEnum } from "Resources/Enums/CharacterEnums/CharacterNameLengthEnum";
-import { CharacterRaceEnum } from "Resources/Enums/CharacterEnums/CharacterRaceEnum";
+import { CharacterGender } from "Resources/Enums/Character/CharacterGender";
+import { CharacterNameLength } from "Resources/Enums/Character/CharacterNameLength";
+import { CharacterRace } from "Resources/Enums/Character/CharacterRace";
 
 export class GenerateNameQuery {
-    public gender: CharacterGenderEnum;
-    public race: CharacterRaceEnum;
-    public length: CharacterNameLengthEnum;
+    public gender: CharacterGender;
+    public race: CharacterRace;
+    public length: CharacterNameLength;
 
-    constructor(race?: CharacterRaceEnum, gender?:CharacterGenderEnum, length?:CharacterNameLengthEnum){
-        this.gender = gender || CharacterGenderEnum.NotSpecified;
-        this.race = race || CharacterRaceEnum.NotSpecified;
-        this.length = length || CharacterNameLengthEnum.NotSpecified;
+    constructor(race?: CharacterRace, gender?:CharacterGender, length?:CharacterNameLength){
+        this.gender = gender || CharacterGender.NotSpecified;
+        this.race = race || CharacterRace.NotSpecified;
+        this.length = length || CharacterNameLength.NotSpecified;
     }
 }
