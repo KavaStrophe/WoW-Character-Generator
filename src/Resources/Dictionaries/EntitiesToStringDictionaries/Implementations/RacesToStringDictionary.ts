@@ -1,4 +1,4 @@
-import { UnknownRaceError } from "Errors/UnknownRaceError";
+import { UnknownRaceError } from "Core/Errors/UnknownRaceError";
 import { CharacterRaceEnum } from "Resources/Enums/CharacterEnums/CharacterRaceEnum";
 import { IEntitiesToStringDictionaries } from "../IEntitiesToStringDictionaries";
 
