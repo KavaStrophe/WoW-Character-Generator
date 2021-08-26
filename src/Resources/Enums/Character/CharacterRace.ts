@@ -1,3 +1,4 @@
+
 export enum CharacterRace {
     NotSpecified,
     Draenei,
@@ -20,5 +21,31 @@ export enum CharacterRace {
     NightBorn,
     VoidElf,
     Vulpera,
-    ZandalariTroll
+    ZandalariTroll,
+    Giant,
+    Vrykul,
+    Drust,
+    Mogu,
+    TolVir,
+    Pygmy,
+    Cenarian,
+    Dragonkin,
+    Jalgar,
+    Furbolg,
+    Gnoll,
+    Grell,
+    Harpy,
+    Hozen,
+    Makrura,
+    MistLurker,
+    Murloc,
+    Quilboar,
+    Saurok,
+    Sprite,
+    Yaungol,
+    Tuskarr,
+    Virmen,
+    Wolvar,
+    Annihilan,
+    Arakkoa
 }

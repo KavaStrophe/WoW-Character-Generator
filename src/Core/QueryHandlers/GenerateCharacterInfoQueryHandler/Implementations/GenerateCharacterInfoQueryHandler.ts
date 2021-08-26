@@ -15,6 +15,9 @@ import { GetRacesOfRaceTypeFromRacesInExpansion } from "Core/Helpers/GetRacesOfR
 import { OrderedExpansions } from "Resources/Lists/OrderedExpansions";
 import { ErrorCode } from "Resources/Enums/System/ErrorCode";
 import { PersonalizedError } from "Core/Errors/PersonalizedError";
+import { GenerateClassQueryHandlerFactory } from "Core/Factories/Implementations/GenerateClassQueryHandlerFactory";
+import { GenerateCharacterClassQuery } from "Resources/Models/Queries/GenerateCharacterClassQuery";
+import { CharacterClass } from "Resources/Models/Characters/CharacterClass";
 
 export class GenerateCharacterInfoQueryHandler implements IGenerateCharacterInfoQueryHandler {
     public Execute(query: GenerateCharacterInfoQuery): CharacterInfo {
@@ -29,13 +32,14 @@ export class GenerateCharacterInfoQueryHandler implements IGenerateCharacterInfo
         const gender = characterInfo.gender || this.GetRandomGenre();
         const race = characterInfo.race || this.GetRandomRaceFromExpansion(expansion, query.raceType);
         const identity = characterInfo.identity || this.GetRandomIdentity(gender, race);
+        const characterClass = characterInfo.characterClass || this.GetRandomClass();
 
         return {
             identity,
-            age: characterInfo.age || 0,
             gender,
             race,
-            expansion
+            expansion,
+            characterClass
         }
     }
 
@@ -65,5 +69,11 @@ export class GenerateCharacterInfoQueryHandler implements IGenerateCharacterInfo
 
     private GetLatestExpansion():GameExpansion{
         return OrderedExpansions[OrderedExpansions.length - 1];
+    }
+
+    private GetRandomClass(): CharacterClass {
+        const queryHandlerFactory = new GenerateClassQueryHandlerFactory();
+        const queryHandler = queryHandlerFactory.Get();
+        return queryHandler.Execute(new GenerateCharacterClassQuery());
     }
 }
