@@ -7,4 +7,5 @@ export const AttributeLevelDescriptionDictionary = new Map<CharacterLevel, Attri
     [CharacterLevel.Average, {name: "Average", description: "Average"}],
     [CharacterLevel.Expert, {name: "Expert", description: "Expert"}],
     [CharacterLevel.Master, {name: "Master", description: "Master"}],
+    [CharacterLevel.Godly, {name: "Godly", description: "Godly"}],
 ])

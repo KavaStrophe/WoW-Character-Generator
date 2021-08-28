@@ -4,7 +4,7 @@ import { CharacterTrait } from "Resources/Enums/Character/CharacterTrait";
 import { ErrorCode } from "Resources/Enums/System/ErrorCode";
 import { MinMax } from "Resources/Models/Others/MinMax";
 import { GenerateCharacterAttributesQuery } from "Resources/Models/Queries/GenerateCharacterAttributesQuery";
-import { GetAttributeModifierForTrait } from "./GetAttributeModifierForTrait";
+import { GetAttributeModifierForTrait } from "./DictionaryHelpers/GetAttributeModifierForTrait";
 
 const ApplyModifier = (minmax: MinMax, modifier: number):MinMax => {
     if(modifier < 0){

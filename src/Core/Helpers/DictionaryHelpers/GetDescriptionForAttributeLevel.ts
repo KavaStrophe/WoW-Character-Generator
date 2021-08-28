@@ -14,16 +14,16 @@ import { CharacterLevel } from "Resources/Enums/Character/CharacterLevel";
 import { ErrorCode } from "Resources/Enums/System/ErrorCode";
 import { AttributeDescription } from "Resources/Models/Characters/AttributeDescription";
 
-const GetDescriptionFromDictionary = (descriptionDictionary: Map<CharacterLevel, AttributeDescription>, level: CharacterLevel):AttributeDescription => {
+const GetDescriptionFromDictionary = (descriptionDictionary: Map<CharacterLevel, AttributeDescription>, level: CharacterLevel):AttributeDescription | null => {
     const description = descriptionDictionary.get(level);
     if(!description)
-        throw new PersonalizedError(ErrorCode.UnknownLevel);
+        return null;
     return description;
 }
 
-export const GetDescriptionForAttributeLevel = (level: CharacterLevel, attribute: CharacterAttribute): AttributeDescription => {
+const GetDescriptionFromDictionaryForAttribute = (level: CharacterLevel, attribute: CharacterAttribute): AttributeDescription | null => {
     switch(attribute){
-        /*case CharacterAttribute.Strength:
+        case CharacterAttribute.Strength:
             return GetDescriptionFromDictionary(StrengthLevelDescriptionDictionary, level);
         case CharacterAttribute.Dexterity:
             return GetDescriptionFromDictionary(DexterityLevelDescriptionDictionary, level);
@@ -40,8 +40,21 @@ export const GetDescriptionForAttributeLevel = (level: CharacterLevel, attribute
         case CharacterAttribute.Perception:
             return GetDescriptionFromDictionary(PerceptionLevelDescriptionDictionary, level);
         case CharacterAttribute.WillPower:
-            return GetDescriptionFromDictionary(WillpowerLevelDescriptionDictionary, level);*/
+            return GetDescriptionFromDictionary(WillpowerLevelDescriptionDictionary, level);
         default:
             return GetDescriptionFromDictionary(AttributeLevelDescriptionDictionary, level);
     }
+}
+
+export const GetDescriptionForAttributeLevel = (level: CharacterLevel, attribute: CharacterAttribute): AttributeDescription => {
+    let description = GetDescriptionFromDictionaryForAttribute(level, attribute);
+    if(description === null){
+        // In the case of a level not declared, go to the default
+        description = GetDescriptionFromDictionary(AttributeLevelDescriptionDictionary, level);
+        if(!description){
+            throw new PersonalizedError(ErrorCode.UnknownLevel);
+        }
+    }
+
+    return description;
 }

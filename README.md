@@ -17,17 +17,17 @@ This project has only one goal: allowing me to experiment some POO features of t
  - Name generation: In progress
  - - Draenei - Implemented
  - - Dwarf - Implemented
- - - Gnome - In progress
- - - Human - Pending
- - - NightElf - Pending
- - - Worgen - Pending
- - - BloodElf - Pending
- - - Forsaken - Pending
- - - Goblin - Pending
- - - Orc - Pending
- - - Tauren - Pending
+ - - Gnome - Implemented
+ - - Human - Implemented
+ - - NightElf - Implemented
+ - - Worgen - Implemented
+ - - BloodElf - Implemented
+ - - Forsaken - Implemented
+ - - Goblin - Implemented
+ - - Orc - Implemented
+ - - Tauren - Implemented
  - - Pandaren - Pending
- - - Troll - Pending
+ - - Troll - Implemented
  - - Others (Centaurs, Harpies, etc.) - Pending
 
  - Randomized classes: Implemented
@@ -45,7 +45,7 @@ This project has only one goal: allowing me to experiment some POO features of t
 
  - Interface: In progress
 
- - Randomized faction names: Pending
+ - Randomized faction names: In Progress
 
  - Automated portrait research: Pending
  - - Is it even possible to have a good one?

@@ -1,5 +1,5 @@
 import { GetRandomElementOfArray } from "Core/Helpers/GetRandomElementOfArray";
-import { GetStringWithFirstLetterCapitalized } from "Core/Helpers/GetStringWithFirstLetterCapitalized";
+import { GetStringWithFirstLetterCapitalized } from "Core/Helpers/TextHelpers/GetStringWithFirstLetterCapitalized";
 import { ClassFormats } from "Resources/Lists/Classes/ClassFormats";
 import { ClassName } from "Resources/Lists/Classes/ClassName";
 import { ClassPrefixes } from "Resources/Lists/Classes/ClassPrefixes";

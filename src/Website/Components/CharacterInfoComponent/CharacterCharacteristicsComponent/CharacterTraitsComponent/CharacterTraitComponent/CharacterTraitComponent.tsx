@@ -1,5 +1,6 @@
-import { GetFormattedTraitDescription } from "Core/Helpers/GetFormattedTraitDescription";
-import { GetTraitDescription } from "Core/Helpers/GetTraitDescription";
+import { GetTraitDescription } from "Core/Helpers/DictionaryHelpers/GetTraitDescription";
+import { GetAllWordsInSentenceFirstLetterCapitalized } from "Core/Helpers/TextHelpers/GetAllWordsInSentenceFirstLetterCapitalized";
+import { GetFormattedTraitDescription } from "Core/Helpers/TextHelpers/GetFormattedTraitDescription";
 import { CharacterGender } from "Resources/Enums/Character/CharacterGender";
 import { CharacterTrait } from "Resources/Enums/Character/CharacterTrait";
 import { CharacterIdentity } from "Resources/Models/Characters/CharacterIdentity";
@@ -16,8 +17,8 @@ export const CharacterTraitComponent = ({trait, identity, gender}: CharacterTrai
 
     return (
         <div>
-            <p>Trait name: {traitDescription.name}</p>
-            <p>Trait description: {description}</p>
+            <p className="font-weight-bold mb-2">{GetAllWordsInSentenceFirstLetterCapitalized(traitDescription.name)}</p>
+            <p className="mb-4">{description}</p>
         </div>
     )
 }

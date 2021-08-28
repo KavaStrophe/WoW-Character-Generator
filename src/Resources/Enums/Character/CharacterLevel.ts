@@ -5,5 +5,6 @@ export enum CharacterLevel {
     Beginner,
     Average,
     Expert,
-    Master
+    Master,
+    Godly
 }

@@ -5,5 +5,6 @@ export enum ErrorCode {
     UnknownTrait,
     UnknownGender,
     UnknownLevel,
-    UnknownAttribute
+    UnknownAttribute,
+    UnknownRace
 }

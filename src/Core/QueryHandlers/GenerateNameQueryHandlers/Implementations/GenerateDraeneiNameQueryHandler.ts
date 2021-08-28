@@ -8,17 +8,18 @@ import {IGenerateNameQueryHandler} from 'Core/QueryHandlers/GenerateNameQueryHan
 import { CharacterGender } from 'Resources/Enums/Character/CharacterGender'
 import { GenerateNameQuery } from 'Resources/Models/Queries/GenerateNameQuery'
 import { CharacterIdentity } from 'Resources/Models/Characters/CharacterIdentity'
-import { GetStringWithFirstLetterCapitalized } from 'Core/Helpers/GetStringWithFirstLetterCapitalized'
+import { GetStringWithFirstLetterCapitalized } from 'Core/Helpers/TextHelpers/GetStringWithFirstLetterCapitalized'
+import { PersonalizedError } from 'Core/Errors/PersonalizedError'
+import { ErrorCode } from 'Resources/Enums/System/ErrorCode'
+import { TwoPartNameGeneratorHelper } from 'Core/Helpers/NameGeneratorHelpers/TwoPartNameGeneratorHelper'
 
 export class GenerateDraeneiNameQueryHandler implements IGenerateNameQueryHandler {
     public Execute(query:GenerateNameQuery):CharacterIdentity {
         const nameStartParts = this.GetNameStartParts(query.gender)
         const nameEndParts = this.GetNameEndParts(query.gender)
 
-        const startName = nameStartParts[Math.floor(Math.random()*nameStartParts.length)];
-        const endName = nameEndParts[Math.floor(Math.random()*nameEndParts.length)];
-        const fullName = GetStringWithFirstLetterCapitalized(`${startName}${endName}`);
-
+        const generator = new TwoPartNameGeneratorHelper([nameStartParts, nameEndParts]);
+        const fullName = GetStringWithFirstLetterCapitalized(generator.Execute());
 
         return {
             fullName: fullName,
@@ -39,8 +40,7 @@ export class GenerateDraeneiNameQueryHandler implements IGenerateNameQueryHandle
                 nameParts = DraeneiMaleFirstNameEndParts;
                 break;
             default:
-                nameParts = [...DraeneiMaleFirstNameEndParts, ...DraeneiFemaleFirstNameEndParts];
-                break;
+                throw new PersonalizedError(ErrorCode.UnknownGender);
         }
 
         return nameParts;
@@ -57,8 +57,7 @@ export class GenerateDraeneiNameQueryHandler implements IGenerateNameQueryHandle
                 nameParts = DraeneiMaleFirstNameStartParts;
                 break;
             default:
-                nameParts = [...DraeneiFemaleFirstNameStartParts, ...DraeneiMaleFirstNameStartParts];
-                break;
+                throw new PersonalizedError(ErrorCode.UnknownGender);
         }
 
         return nameParts;

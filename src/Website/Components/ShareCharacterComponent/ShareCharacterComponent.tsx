@@ -1,4 +1,4 @@
-import { GetPagePathConfigForPageName } from "Core/Helpers/GetPagePathConfigForPageName"
+import { GetPagePathConfigForPageName } from "Core/Helpers/DictionaryHelpers/GetPagePathConfigForPageName"
 import { useState } from "react";
 import { PageName } from "Resources/Enums/Website/PageName"
 

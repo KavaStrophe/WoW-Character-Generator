@@ -10,6 +10,7 @@ export const CharacterAttributesComponent = ({attributes}:CharacterAttributesCom
 
     return (
         <>
+            <p className="text-center h4 mb-3">Attributes</p>
             <CharacterAttributeComponent attribute={CharacterAttribute.Strength} level={attributes.Strength} />
             <CharacterAttributeComponent attribute={CharacterAttribute.Dexterity} level={attributes.Dexterity} />
             <CharacterAttributeComponent attribute={CharacterAttribute.Constitution} level={attributes.Constitution} />

@@ -5,5 +5,6 @@ export const AttributeLevels: CharacterLevel[] = [
     CharacterLevel.Beginner,
     CharacterLevel.Average,
     CharacterLevel.Expert,
-    CharacterLevel.Master
+    CharacterLevel.Master,
+    CharacterLevel.Godly
 ]

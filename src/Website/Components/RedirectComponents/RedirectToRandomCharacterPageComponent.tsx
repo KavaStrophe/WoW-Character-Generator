@@ -1,4 +1,4 @@
-import { GetPagePathConfigForPageName } from "Core/Helpers/GetPagePathConfigForPageName";
+import { GetPagePathConfigForPageName } from "Core/Helpers/DictionaryHelpers/GetPagePathConfigForPageName";
 import { Redirect } from "react-router-dom";
 import { PageName } from "Resources/Enums/Website/PageName";
 import {v4 as uuid} from 'uuid'

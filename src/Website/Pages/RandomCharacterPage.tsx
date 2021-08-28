@@ -17,7 +17,7 @@ export const RandomCharacterPage = ({seed}:RandomCharacterPageParameters) => {
     const characterInfo = characterInfoAdapter.Get({});
     
     return ( 
-        <>  
+        <>
             <CharacterInfoboxComponent characterInfo={characterInfo}/>
         </>
     )

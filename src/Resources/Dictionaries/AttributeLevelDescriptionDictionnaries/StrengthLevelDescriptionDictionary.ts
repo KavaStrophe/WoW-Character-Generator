@@ -6,5 +6,5 @@ export const StrengthLevelDescriptionDictionary = new Map<CharacterLevel, Attrib
     [CharacterLevel.Beginner, {name: "Weak", description: ""}],
     [CharacterLevel.Average, {name: "Weak", description: ""}],
     [CharacterLevel.Expert, {name: "Weak", description: ""}],
-    [CharacterLevel.Master, {name: "Weak", description: ""}],
+    [CharacterLevel.Master, {name: "Badass", description: ""}],
 ])

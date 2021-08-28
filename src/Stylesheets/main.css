@@ -1,0 +1,16 @@
+.Circle {
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.RedBackground {
+    background-color: red;
+}
+
+.GreenBackground {
+    background-color: green;
+}
