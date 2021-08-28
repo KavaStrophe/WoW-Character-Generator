@@ -28,5 +28,8 @@ export const ClassPrefixes: string[] = [
     "blood",
     "soul",
     "hell",
-    "pyro"
+    "pyro",
+    'void',
+    'spirit',
+    'battle'
 ]

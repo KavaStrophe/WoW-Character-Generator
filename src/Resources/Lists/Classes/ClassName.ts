@@ -12,7 +12,7 @@ export const ClassName: string[] = [
     "ninja",
     "archer",
     "hunter",
-    "rander",
+    "ranger",
     "berserker",
     "cleric",
     "priest",
@@ -37,5 +37,7 @@ export const ClassName: string[] = [
     "tinker",
     "alchemist",
     "duelist",
-    "doctor"
+    "doctor",
+    'healer',
+    'lord'
 ]

@@ -38,7 +38,7 @@ export class GenerateDraeneiNameQueryHandler implements IGenerateNameQueryHandle
             case CharacterGender.Male:
                 nameParts = DraeneiMaleFirstNameEndParts;
                 break;
-            case CharacterGender.NotSpecified:
+            default:
                 nameParts = [...DraeneiMaleFirstNameEndParts, ...DraeneiFemaleFirstNameEndParts];
                 break;
         }
@@ -56,8 +56,8 @@ export class GenerateDraeneiNameQueryHandler implements IGenerateNameQueryHandle
             case CharacterGender.Male:
                 nameParts = DraeneiMaleFirstNameStartParts;
                 break;
-            case CharacterGender.NotSpecified:
-                nameParts = [...DraeneiMaleFirstNameStartParts, ...DraeneiFemaleFirstNameStartParts];
+            default:
+                nameParts = [...DraeneiFemaleFirstNameStartParts, ...DraeneiMaleFirstNameStartParts];
                 break;
         }
 

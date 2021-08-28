@@ -10,11 +10,11 @@ import { IGenerateClassQueryHandler } from "../IGenerateClassQueryHandler";
 
 export class GenerateClassQueryHandler implements IGenerateClassQueryHandler {
     Execute(_:GenerateCharacterClassQuery): CharacterClass {
-        const name = this.GetRandomClassName();
+        const className = this.GetRandomClassName();
 
-        return new CharacterClass(
-            name
-        )
+        return {
+            className
+        };
     }
 
     private GetRandomClassName():string{

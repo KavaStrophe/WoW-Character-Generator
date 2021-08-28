@@ -1,4 +1,9 @@
 export enum ErrorCode {
     NoRaceRegisteredForExpansion,
-    UnknownRaceType
+    UnknownRaceType,
+    UnknownPage,
+    UnknownTrait,
+    UnknownGender,
+    UnknownLevel,
+    UnknownAttribute
 }

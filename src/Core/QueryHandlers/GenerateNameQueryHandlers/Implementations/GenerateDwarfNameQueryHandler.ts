@@ -4,7 +4,7 @@ import { CharacterGender } from 'Resources/Enums/Character/CharacterGender'
 import { CharacterNameLength } from 'Resources/Enums/Character/CharacterNameLength';
 import { GenerateNameQuery } from 'Resources/Models/Queries/GenerateNameQuery';
 import { GetRandomElementOfArray } from 'Core/Helpers/GetRandomElementOfArray';
-import { AvailableNameLengths } from 'Resources/Lists/AvailableNameLengths';
+import { NameLengths } from 'Resources/Lists/Names/NameLengths';
 import { CharacterIdentity } from 'Resources/Models/Characters/CharacterIdentity';
 import { GetStringWithFirstLetterCapitalized } from 'Core/Helpers/GetStringWithFirstLetterCapitalized';
 
@@ -36,7 +36,7 @@ export class GenerateDwarfNameQueryHandler implements IGenerateNameQueryHandler 
         const nameParts = this.GetNamePartsByGender(gender);
 
         if(nameLength === CharacterNameLength.NotSpecified)
-            nameLength = GetRandomElementOfArray(AvailableNameLengths);
+            nameLength = GetRandomElementOfArray(NameLengths);
             
         switch(nameLength){
             case CharacterNameLength.Short:

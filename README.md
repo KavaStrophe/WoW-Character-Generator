@@ -28,15 +28,26 @@ This project has only one goal: allowing me to experiment some POO features of t
  - - Tauren - Pending
  - - Pandaren - Pending
  - - Troll - Pending
- - - Default - Pending
+ - - Others (Centaurs, Harpies, etc.) - Pending
 
- - Randomized classes: In progress
+ - Randomized classes: Implemented
  - - Create a base framework - Implemented
- - - Get random existing class - Pending
+ - - Get random existing class - Not Implemented - Boring...
  - - Get fully randomized class - Implemented
+ 
+ - Re-generate button: Implemented
+ 
+ - Random traits (cannibal, shy, etc...): Implemented
+
+ - Random attributes (strength, etc..): Implemented
+
+ - Traits modifies max & min of the attributes: Implemented
+
+ - Interface: In progress
+
+ - Randomized faction names: Pending
 
  - Automated portrait research: Pending
+ - - Is it even possible to have a good one?
 
  - Share function: Pending
-
- - Interface: Pending
