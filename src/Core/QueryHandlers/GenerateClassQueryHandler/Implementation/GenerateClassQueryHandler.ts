@@ -23,7 +23,7 @@ export class GenerateClassQueryHandler implements IGenerateClassQueryHandler {
         const name = this.GetRandomClassMainName();
         const suffix = this.GetRandomClassSuffix();
 
-        return format.replace("{prefix}", prefix).replace("{name}", name).replace("{suffix}", suffix);
+        return format.replaceAll("{prefix}", prefix).replaceAll("{name}", name).replaceAll("{suffix}", suffix);
     }
 
     private GetRandomClassFormat():string {

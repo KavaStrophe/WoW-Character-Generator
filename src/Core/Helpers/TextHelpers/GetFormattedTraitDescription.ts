@@ -6,11 +6,11 @@ import { GetStringWithFirstLetterCapitalized } from "./GetStringWithFirstLetterC
 export const GetFormattedTraitDescription = (description:string, identity: CharacterIdentity, gender: CharacterGender):string => {
     const pronouns = GetPronounsOfGender(gender);
 
-    return description.replace("{Firstname}", identity.firstName)
-        .replace("{PersonalPronoun}", GetStringWithFirstLetterCapitalized(pronouns.personal))
-        .replace("{personalPronoun}", pronouns.personal)
-        .replace("{PossessivePronoun}", GetStringWithFirstLetterCapitalized(pronouns.possessive))
-        .replace("{possessivePronoun}", pronouns.possessive)
-        .replace("{PemonstrativePronoun}", GetStringWithFirstLetterCapitalized(pronouns.demonstrative))
-        .replace("{demonstrativePronoun}", pronouns.demonstrative);
+    return description.replaceAll("{Firstname}", identity.firstName)
+        .replaceAll("{PersonalPronoun}", GetStringWithFirstLetterCapitalized(pronouns.personal))
+        .replaceAll("{personalPronoun}", pronouns.personal)
+        .replaceAll("{PossessivePronoun}", GetStringWithFirstLetterCapitalized(pronouns.possessive))
+        .replaceAll("{possessivePronoun}", pronouns.possessive)
+        .replaceAll("{PemonstrativePronoun}", GetStringWithFirstLetterCapitalized(pronouns.demonstrative))
+        .replaceAll("{demonstrativePronoun}", pronouns.demonstrative);
 }

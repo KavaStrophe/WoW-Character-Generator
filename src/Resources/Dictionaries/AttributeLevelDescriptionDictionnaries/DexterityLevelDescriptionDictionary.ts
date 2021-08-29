@@ -2,9 +2,10 @@ import { CharacterLevel } from "Resources/Enums/Character/CharacterLevel";
 import { AttributeDescription } from "Resources/Models/Characters/AttributeDescription";
 
 export const DexterityLevelDescriptionDictionary = new Map<CharacterLevel, AttributeDescription>([
-    [CharacterLevel.Weak, {name: "Weak", description: ""}],
-    [CharacterLevel.Beginner, {name: "Weak", description: ""}],
-    [CharacterLevel.Average, {name: "Weak", description: ""}],
-    [CharacterLevel.Expert, {name: "Weak", description: ""}],
-    [CharacterLevel.Master, {name: "Weak", description: ""}],
+    [CharacterLevel.Weak, {name: "Clumsy", description: ""}],
+    [CharacterLevel.Beginner, {name: "Inept", description: ""}],
+    [CharacterLevel.Average, {name: "Average", description: ""}],
+    [CharacterLevel.Expert, {name: "Swift", description: ""}],
+    [CharacterLevel.Master, {name: "Skillful", description: ""}],
+    [CharacterLevel.Godly, {name: "Supranatural", description: ""}],
 ])

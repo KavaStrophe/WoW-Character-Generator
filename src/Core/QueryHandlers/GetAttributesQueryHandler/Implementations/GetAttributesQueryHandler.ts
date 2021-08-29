@@ -17,13 +17,33 @@ export class GetAttributesQueryHandler implements IGetAttributesQueryHandler {
         return configMin > queryMin ? configMin : queryMin;
     }
 
+    /**
+     * Attribute level distribution:
+     * lvl 1: 10%
+     * lvl 2: 20%
+     * lvl 3: 35%
+     * lvl 4: 20%
+     * lvl 5: 10%
+     * lvl 6: 5%
+     */
+
     private ConvertToLevel(level:number):CharacterLevel {
-        if(level > AttributeLevels.length - 1){
-            throw new PersonalizedError(ErrorCode.UnknownLevel);
+        if(level > 95){
+            return AttributeLevels[5] // Godly
+        } else if (level > 85) {
+            return AttributeLevels[4] // Master
+        } else if (level > 65) {
+            return AttributeLevels[3] // Expert
+        } else if (level > 30) {
+            return AttributeLevels[2] // Average
+        } else if (level > 10) {
+            return AttributeLevels[1] // Beginner
+        } else {
+            return AttributeLevels[0] // Weak
         }
-        
-        return AttributeLevels[level];
     }
+
+
 
     Execute(query: GenerateCharacterAttributesQuery): CharacterAttributes {
         const strengthAttributeConfig = GetCharacterAttributeConfig(CharacterAttribute.Strength);

@@ -17,7 +17,6 @@ export const CharacterAttributeComponent = ({attribute,level}:CharacterAttribute
     const attributeDescription = GetDescriptionForAttribute(attribute);
     const levelDescription = GetDescriptionForAttributeLevel(level, attribute);
     const indexLevel = AttributeLevels.indexOf(level);
-    const levelConfig  = GetCharacterAttributeConfig(attribute);
 
     return (
         <OverlayTrigger placement="left" overlay={
@@ -34,7 +33,7 @@ export const CharacterAttributeComponent = ({attribute,level}:CharacterAttribute
                         </p>
                     </Col>
                     <Col className="text-right">
-                        <AttributeLevelIndicatorComponent maxLevel={levelConfig.Max} level={indexLevel}/>
+                        <AttributeLevelIndicatorComponent level={indexLevel}/>
                     </Col>
                 </Row>
                 <Row>

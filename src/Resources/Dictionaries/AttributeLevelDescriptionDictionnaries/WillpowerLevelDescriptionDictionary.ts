@@ -2,9 +2,10 @@ import { CharacterLevel } from "Resources/Enums/Character/CharacterLevel";
 import { AttributeDescription } from "Resources/Models/Characters/AttributeDescription";
 
 export const WillpowerLevelDescriptionDictionary = new Map<CharacterLevel, AttributeDescription>([
-    [CharacterLevel.Weak, {name: "Weak", description: ""}],
-    [CharacterLevel.Beginner, {name: "Weak", description: ""}],
-    [CharacterLevel.Average, {name: "Weak", description: ""}],
-    [CharacterLevel.Expert, {name: "Weak", description: ""}],
-    [CharacterLevel.Master, {name: "Weak", description: ""}],
+    [CharacterLevel.Weak, {name: "Slavish", description: ""}],
+    [CharacterLevel.Beginner, {name: "Submissive", description: ""}],
+    [CharacterLevel.Average, {name: "Ordinary", description: ""}],
+    [CharacterLevel.Expert, {name: "Strong", description: ""}],
+    [CharacterLevel.Master, {name: "Indomitable", description: ""}],
+    [CharacterLevel.Godly, {name: "Domineering", description: ""}],
 ])
