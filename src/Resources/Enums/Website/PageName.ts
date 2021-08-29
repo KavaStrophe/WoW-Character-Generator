@@ -1,5 +1,6 @@
 export enum PageName {
     RandomCharacter,
     NewRandomCharacter,
-    HomePage
+    HomePage,
+    SavedCharacters
 }

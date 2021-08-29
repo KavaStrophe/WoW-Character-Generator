@@ -26,8 +26,8 @@ This project has only one goal: allowing me to experiment some POO features of t
  - - Goblin - Implemented
  - - Orc - Implemented
  - - Tauren - Implemented
- - - Pandaren - Pending
  - - Troll - Implemented
+ - - Pandaren - Pending
  - - Others (Centaurs, Harpies, etc.) - Pending
 
  - Randomized classes: Implemented
@@ -44,10 +44,5 @@ This project has only one goal: allowing me to experiment some POO features of t
  - Traits modifies max & min of the attributes: Implemented
 
  - Interface: In progress
-
- - Randomized faction names: In Progress
-
- - Automated portrait research: Pending
- - - Is it even possible to have a good one?
 
  - Share function: Pending

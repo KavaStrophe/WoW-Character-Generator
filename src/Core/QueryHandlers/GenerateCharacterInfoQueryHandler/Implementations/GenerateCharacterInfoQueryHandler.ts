@@ -24,7 +24,7 @@ export class GenerateCharacterInfoQueryHandler implements IGenerateCharacterInfo
         return this.FillCharacterInfo(query);
     }
 
-    private FillCharacterInfo(_: GenerateCharacterInfoQuery): CharacterInfo{
+    private FillCharacterInfo(query: GenerateCharacterInfoQuery): CharacterInfo{
         const gender = this.GetRandomGenre();
         const race = this.GetRandomRace();
         const identity = this.GetRandomIdentity(gender, race);
@@ -38,7 +38,8 @@ export class GenerateCharacterInfoQueryHandler implements IGenerateCharacterInfo
             race,
             characterClass,
             traits,
-            attributes
+            attributes,
+            seed: query.seed
         }
     }
 

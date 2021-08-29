@@ -12,4 +12,5 @@ export interface CharacterInfo {
     characterClass: CharacterClass;
     traits: CharacterTrait[];
     attributes: CharacterAttributes;
+    seed: string;
 }

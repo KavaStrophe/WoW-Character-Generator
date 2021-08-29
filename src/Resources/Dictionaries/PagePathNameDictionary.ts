@@ -5,4 +5,5 @@ export const PagePathNameDictionary = new Map<PageName, PagePathConfig>([
     [PageName.HomePage, {path: "/", pathModel: "/"}],
     [PageName.RandomCharacter, {path: "/character", pathModel:"/character/:seed"}],
     [PageName.NewRandomCharacter, {path: "/character", pathModel:"/character"}],
+    [PageName.SavedCharacters, {path: "/saved", pathModel:"/saved"}],
 ])
